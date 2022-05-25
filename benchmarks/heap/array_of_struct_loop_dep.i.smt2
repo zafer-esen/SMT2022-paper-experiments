@@ -1,0 +1,43 @@
+(set-logic HORN)
+(set-info :source |
+    Benchmark: C_VC
+    Output by Princess (http://www.philipp.ruemmer.org/princess.shtml)
+|)
+(set-info :status unsat)
+(declare-heap Heap Addr HeapObject
+ defObj
+ ((HeapObject 0) (_S 0)) (
+  (
+   (O_Int (getInt Int))
+   (O_UInt (getUInt Int))
+   (O_Addr (getAddr Addr))
+   (O__S (get_S _S))
+   (defObj)
+  )
+  (
+   (_S (n Int))
+  )
+))
+(declare-fun inv_main10 (Heap AddrRange Int) Bool)
+(declare-fun inv_main15 (Heap AddrRange Int Int) Bool)
+(declare-fun inv_main3 (Heap AddrRange Int) Bool)
+(declare-fun inv_main6 (Heap AddrRange Int) Bool)
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (or (not (and (= var2 (newBatchHeap (batchAlloc emptyHeap (O__S (_S 0)) 100000))) (= var1 (newAddrRange (batchAlloc emptyHeap (O__S (_S 0)) 100000))))) (inv_main3 var2 var1 var0))))
+(assert (forall ((var0 Int) (var1 Int) (var2 AddrRange) (var3 Heap)) (or (not (and (inv_main3 var3 var2 var1) (= var0 0))) (inv_main6 var3 var2 var0))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap) (var3 Int) (var4 Int) (var5 AddrRange) (var6 Heap)) (or (not (and (inv_main6 var6 var5 var4) (and (and (<= 0 (+ (+ 100000 (* (- 1) (+ var3 1))) (- 1))) (and (and (is-O__S (read var6 (nthAddrRange var5 var4))) (is-O__S (read var6 (nthAddrRange var5 var4)))) (and (and (= var2 (write var6 (nthAddrRange var5 var4) (O__S (_S 10)))) (= var1 var5)) (= var3 var4)))) (= var0 (+ var3 1))))) (inv_main6 var2 var1 var0))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (or (not (and (inv_main10 var2 var1 var0) (and (not (= (+ var0 1) 15000)) (is-O__S (read var2 (nthAddrRange var1 var0)))))) (inv_main15 var2 var1 var0 var0))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap) (var3 Int) (var4 Int) (var5 AddrRange) (var6 Heap)) (or (not (and (inv_main6 var6 var5 var4) (and (and (not (<= 0 (+ (+ 100000 (* (- 1) (+ var3 1))) (- 1)))) (and (and (is-O__S (read var6 (nthAddrRange var5 var4))) (is-O__S (read var6 (nthAddrRange var5 var4)))) (and (and (= var2 (write var6 (nthAddrRange var5 var4) (O__S (_S 10)))) (= var1 var5)) (= var3 var4)))) (= var0 0)))) (inv_main10 var2 var1 var0))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap) (var3 Int) (var4 Int) (var5 Int) (var6 AddrRange) (var7 Heap)) (or (not (and (inv_main15 var7 var6 var5 var4) (and (and (and (<= 0 (+ (+ 100000 (* (- 1) (+ var3 1))) (- 1))) (and (is-O__S (read var7 (nthAddrRange var6 (+ var4 1)))) (is-O__S (read var7 (nthAddrRange var6 (+ var4 1)))))) (and (and (= var2 (write var7 (nthAddrRange var6 (+ var4 1)) (O__S (_S 20)))) (= var1 var6)) (= var3 var5))) (= var0 (+ var3 1))))) (inv_main10 var2 var1 var0))))
+(assert (forall ((var0 Int) (var1 Int) (var2 AddrRange) (var3 Heap)) (or (not (and (inv_main10 var3 var2 var1) (and (and (<= 0 (+ (+ 100000 (* (- 1) (+ var1 1))) (- 1))) (and (= (+ var1 1) 15000) (is-O__S (read var3 (nthAddrRange var2 var1))))) (= var0 (+ var1 1))))) (inv_main10 var3 var2 var0))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main6 var2 var1 var0) (not (is-O__S (read var2 (nthAddrRange var1 var0))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main6 var2 var1 var0) (and (is-O__S (read var2 (nthAddrRange var1 var0))) (not (within var1 (nthAddrRange var1 var0))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main6 var2 var1 var0) (and (is-O__S (read var2 (nthAddrRange var1 var0))) (not (is-O__S (read var2 (nthAddrRange var1 var0)))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main10 var2 var1 var0) (not (is-O__S (read var2 (nthAddrRange var1 var0))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main10 var2 var1 var0) (not (within var1 (nthAddrRange var1 var0)))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main10 var2 var1 var0) (not (is-O__S (read var2 (nthAddrRange var1 var0))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main10 var2 var1 var0) (and (is-O__S (read var2 (nthAddrRange var1 var0))) (not (within var1 (nthAddrRange var1 var0))))))))
+(assert (forall ((var0 Int) (var1 AddrRange) (var2 Heap)) (not (and (inv_main10 var2 var1 var0) (and (is-O__S (read var2 (nthAddrRange var1 var0))) (not (= (n (get_S (read var2 (nthAddrRange var1 var0)))) 10)))))))
+(assert (forall ((var0 Int) (var1 Int) (var2 AddrRange) (var3 Heap)) (not (and (inv_main15 var3 var2 var1 var0) (not (is-O__S (read var3 (nthAddrRange var2 (+ var0 1)))))))))
+(assert (forall ((var0 Int) (var1 Int) (var2 AddrRange) (var3 Heap)) (not (and (inv_main15 var3 var2 var1 var0) (and (is-O__S (read var3 (nthAddrRange var2 (+ var0 1)))) (not (within var2 (nthAddrRange var2 (+ var0 1)))))))))
+(assert (forall ((var0 Int) (var1 Int) (var2 AddrRange) (var3 Heap)) (not (and (inv_main15 var3 var2 var1 var0) (and (is-O__S (read var3 (nthAddrRange var2 (+ var0 1)))) (not (is-O__S (read var3 (nthAddrRange var2 (+ var0 1))))))))))
+(check-sat)
